@@ -1,5 +1,5 @@
-import Ship from './vehicles/ship';
-import Truck from './vehicles/truck';
+import Ship from '../vehicles/ship';
+import Truck from '../vehicles/truck';
 
 class VehicleFactory {
   create(type, ...rest) {

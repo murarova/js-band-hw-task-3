@@ -1,9 +1,6 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
-/* eslint-disable class-methods-use-this */
 import EventEmitter from './services/event-emitter';
 import Cost from './cost';
-import vehicleFactory from './factory';
+import vehicleFactory from './services/factory';
 
 export default class View extends EventEmitter {
   constructor() {

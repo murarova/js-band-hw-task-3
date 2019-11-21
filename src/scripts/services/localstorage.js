@@ -1,7 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable consistent-return */
-/* eslint-disable no-console */
-
 class LocalStorage {
   constructor() {
     if (typeof LocalStorage.instance === 'object') {
@@ -14,9 +10,12 @@ class LocalStorage {
 
   get(key) {
     try {
-      const serializedState = localStorage.getItem(key);
+      const serializedState = localStorage.getItem(this.prefix + key);
 
-      return serializedState === null ? undefined : JSON.parse(serializedState);
+      if(serializedState === null) {
+        localStorage.setItem(this.prefix + key, [])
+      }
+      return JSON.parse(serializedState);
     } catch (err) {
       console.error('Get state error: ', err);
     }
@@ -25,7 +24,7 @@ class LocalStorage {
   set(key, value) {
     try {
       const serializedState = JSON.stringify(value);
-      localStorage.setItem(key, serializedState);
+      localStorage.setItem(this.prefix + key, serializedState);
     } catch (err) {
       console.error('Set state error: ', err);
     }
