@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable class-methods-use-this */
 import Ship from './vehicles/ship';
 import Truck from './vehicles/truck';
 
