@@ -12,11 +12,14 @@ class LocalStorage {
     try {
       const serializedState = localStorage.getItem(this.prefix + key);
 
-      if(serializedState === null) {
-        localStorage.setItem(this.prefix + key, [])
+      if (serializedState === null) {
+        localStorage.setItem(this.prefix + key, '[]');
+        return;
       }
+      // eslint-disable-next-line consistent-return
       return JSON.parse(serializedState);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Get state error: ', err);
     }
   }
@@ -26,6 +29,7 @@ class LocalStorage {
       const serializedState = JSON.stringify(value);
       localStorage.setItem(this.prefix + key, serializedState);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error('Set state error: ', err);
     }
   }
